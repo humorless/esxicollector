@@ -1,5 +1,5 @@
 # esxicollector
-The scripts that can collect data from VMware ESXi system through SNMP protocol in open-falcon json format
+The scripts that collect data from VMware ESXi system through SNMP protocol and output data as open-falcon json format
 
 # Why use esxicollector?
 
