@@ -5,9 +5,9 @@ version="2c"
 
 
 date=$(date +%s)
+list=$(snmpbulkwalk -v $version -c $community $host .1.3.6.1.2.1.25.2.3.1.7)
 echo "["
 count=0
-list=$(snmpbulkwalk -v $version -c $community $host .1.3.6.1.2.1.25.2.3.1.7)
 
 while read -r line; do
         if (($count != 0)); then

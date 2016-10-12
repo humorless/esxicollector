@@ -7,9 +7,9 @@ version="2c"
 date=$(date +%s)
 # hrProcesssorLoad
 #"show cpu load: value 0~32"
+list=$(snmpbulkwalk -v $version -c $community $host .1.3.6.1.2.1.25.3.3.1.2)
 echo "["
 count=0
-list=$(snmpbulkwalk -v $version -c $community $host .1.3.6.1.2.1.25.3.3.1.2)
 
 while read -r line; do
 	if (($count != 0)); then
