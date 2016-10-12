@@ -26,7 +26,7 @@ while read -r line; do
 	value=$(echo $value | xargs) #trim the white space
 	echo "{\
 	    \"endpoint\"   : \"$host\",\
-	    \"tags\"       : \"$index\",\
+	    \"tags\"       : \"iface=$index\",\
 	    \"timestamp\"  : $date,\
 	    \"metric\"     : \"esxi.net.in.ucast.pkts\",\
 	    \"value\"      : $value,\
@@ -40,7 +40,7 @@ while read -r line; do
 	value=$(echo $value | xargs) #trim the white space
 	echo ",{\
 	    \"endpoint\"   : \"$host\",\
-	    \"tags\"       : \"$index\",\
+	    \"tags\"       : \"iface=$index\",\
 	    \"timestamp\"  : $date,\
 	    \"metric\"     : \"esxi.net.in.multicast.pkts\",\
 	    \"value\"      : $value,\
@@ -54,7 +54,7 @@ while read -r line; do
 	value=$(echo $value | xargs) #trim the white space
 	echo ",{\
 	    \"endpoint\"   : \"$host\",\
-	    \"tags\"       : \"$index\",\
+	    \"tags\"       : \"iface=$index\",\
 	    \"timestamp\"  : $date,\
 	    \"metric\"     : \"esxi.net.in.broadcast.pkts\",\
 	    \"value\"      : $value,\

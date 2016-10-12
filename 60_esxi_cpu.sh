@@ -22,7 +22,7 @@ while read -r line; do
 	value=$(echo $value | xargs) #trim the white space
 	echo "{\
 	    \"endpoint\"   : \"$host\",\
-	    \"tags\"       : \"$index\",\
+	    \"tags\"       : \"core=$index\",\
 	    \"timestamp\"  : $date,\
 	    \"metric\"     : \"esxi.cpu.core\",\
 	    \"value\"      : $value,\
