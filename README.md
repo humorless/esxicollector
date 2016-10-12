@@ -14,9 +14,9 @@ Then you will need some scripts that can translate the snmp OIDs information int
   3. Setup SNMP config  
      ```mkdir ~/.snmp```  
      ```echo "mibs +ALL" > ~/.snmp/snmp.conf ```
-  4. Fill proper content into the variables in `exsi_collector.sh`
+  4. Fill proper content into the variables in `esxi_collector.sh`
   5. Setup cronjobs  
-     ``` * * * * * exsi_collector.sh ```	
+     ``` * * * * * esxi_collector.sh ```
 
 
 # How to verify?
