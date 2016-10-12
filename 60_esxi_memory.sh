@@ -5,7 +5,7 @@ version="2c"
 
 
 date=$(date +%s)
-tags=(size used avail)
+types=(size used avail)
 list=$(snmpbulkwalk -v $version -c $community $host 1.3.6.1.4.1.6876.3.2)
 echo "["
 count=0
@@ -21,9 +21,9 @@ while read -r line; do
         value=$(echo $value | xargs) #trim the white space
         echo "{\
             \"endpoint\"   : \"$host\",\
-            \"tags\"       : \"${tags[$count]}\",\
+            \"tags\"       : \"\",\
             \"timestamp\"  : $date,\
-            \"metric\"     : \"esxi.cpu.memory.kliobytes\",\
+            \"metric\"     : \"esxi.cpu.memory.kliobytes.${types[$count]}\",\
             \"value\"      : $value,\
             \"counterType\": \"GAUGE\",\
             \"step\"       : 60}"
