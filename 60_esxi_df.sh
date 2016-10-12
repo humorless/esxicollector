@@ -24,7 +24,7 @@ while read -r line; do
 		used=$(echo $used | xargs -d% | xargs) #trim the white space
 		echo "{\
 		    \"endpoint\"   : \"$host\",\
-		    \"tags\"       : \"$index\",\
+		    \"tags\"       : \"mount=$index\",\
 		    \"timestamp\"  : $date,\
 		    \"metric\"     : \"esxi.df.size.kilobytes\",\
 		    \"value\"      : $size,\
@@ -32,7 +32,7 @@ while read -r line; do
 		    \"step\"       : 60}"
 		echo ",{\
 		    \"endpoint\"   : \"$host\",\
-		    \"tags\"       : \"$index\",\
+		    \"tags\"       : \"mount=$index\",\
 		    \"timestamp\"  : $date,\
 		    \"metric\"     : \"esxi.df.used.percentage\",\
 		    \"value\"      : $used,\

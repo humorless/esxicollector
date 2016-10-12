@@ -13,7 +13,6 @@ for host in "${targets[@]}"
 do 
 	curl -s -X POST -d "$($workdir/60_esxi_cpu.sh $community "${host}" | python -m json.tool)" "$httpprex/v1/push" &
 	curl -s -X POST -d "$($workdir/60_esxi_df.sh $community "${host}" | python -m json.tool)" "$httpprex/v1/push" &
-	curl -s -X POST -d "$($workdir/60_esxi_disk.sh $community "${host}" | python -m json.tool)" "$httpprex/v1/push" &
 	curl -s -X POST -d "$($workdir/60_esxi_if_in.sh $community "${host}" | python -m json.tool)" "$httpprex/v1/push" &
 	curl -s -X POST -d "$($workdir/60_esxi_if_out.sh $community "${host}" | python -m json.tool)" "$httpprex/v1/push" &
 	curl -s -X POST -d "$($workdir/60_esxi_memory.sh $community "${host}" | python -m json.tool)" "$httpprex/v1/push" &

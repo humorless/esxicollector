@@ -1,4 +1,5 @@
 #!/bin/bash
+# This scripts should be integrated with df.sh
 community=$1
 host=$2
 version="2c"
