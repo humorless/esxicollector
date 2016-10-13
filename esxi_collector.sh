@@ -16,6 +16,6 @@ do
 	curl -s -X POST -d "$($workdir/60_esxi_if_in.sh $community "${host}" | python -m json.tool)" "$httpprex/v1/push" &
 	curl -s -X POST -d "$($workdir/60_esxi_if_out.sh $community "${host}" | python -m json.tool)" "$httpprex/v1/push" &
 	curl -s -X POST -d "$($workdir/60_esxi_memory.sh $community "${host}" | python -m json.tool)" "$httpprex/v1/push" &
-	curl -s -X POST -d "$($workdir/60_esxi_user.sh $community "${host}" | python -m json.tool)" "$httpprex/v1/push" &
+	curl -s -X POST -d "$($workdir/60_esxi_user.sh $community "${host}" 2>/dev/null | python -m json.tool)" "$httpprex/v1/push" &
 done
 
