@@ -1,7 +1,7 @@
 #!/bin/bash
 
-community="ro_fast_snmp1"
-host="183.203.8.131"
+community="COMMUNITY_STRING"
+host="example1.com"
 version="2c"
 snmpbulkwalk="snmpbulkwalk"
 snmpdf="snmpdf"
