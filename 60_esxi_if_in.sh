@@ -7,6 +7,7 @@ version="2c"
 date=$(date +%s)
 count=0
 list=$(snmpbulkwalk -v $version -c $community $host ifName)
+listOctet=$(snmpbulkwalk -v $version -c $community $host ifHCInOctets)
 listUcast=$(snmpbulkwalk -v $version -c $community $host ifHCInUcastPkts)
 listMulticast=$(snmpbulkwalk -v $version -c $community $host ifHCInMulticastPkts)
 listBroadcast=$(snmpbulkwalk -v $version -c $community $host ifHCInBroadcastPkts)
@@ -19,12 +20,26 @@ while read -r line; do
 	fi
 
         num=$((count+1))
-	inner=$(echo "$listUcast" | sed "${num}q;d")
+	inner=$(echo "$listOctet" | sed "${num}q;d")
 	index=$(echo $line | awk -F= '{print $2}' | awk -F: '{print $2}')
 	index=$(echo $index | xargs) #trim the white space
 	value=$(echo $inner | awk -F= '{print $2}' | awk -F: '{print $2}' )
 	value=$(echo $value | xargs) #trim the white space
 	echo "{\
+	    \"endpoint\"   : \"$host\",\
+	    \"tags\"       : \"iface=$index\",\
+	    \"timestamp\"  : $date,\
+	    \"metric\"     : \"esxi.net.in.octets\",\
+	    \"value\"      : $value,\
+	    \"counterType\": \"COUNTER\",\
+	    \"step\"       : 60}"
+
+	inner=$(echo "$listUcast" | sed "${num}q;d")
+	index=$(echo $line | awk -F= '{print $2}' | awk -F: '{print $2}')
+	index=$(echo $index | xargs) #trim the white space
+	value=$(echo $inner | awk -F= '{print $2}' | awk -F: '{print $2}' )
+	value=$(echo $value | xargs) #trim the white space
+	echo ",{\
 	    \"endpoint\"   : \"$host\",\
 	    \"tags\"       : \"iface=$index\",\
 	    \"timestamp\"  : $date,\
